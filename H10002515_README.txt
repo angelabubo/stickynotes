@@ -1,0 +1,29 @@
+//SQL Queries to run in XAMPP
+DROP DATABASE IF EXISTS stickynotesdb;
+create DATABASE stickynotesdb;
+
+use stickynotesdb;
+
+create table users (
+idUsers int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+uidUsers TINYTEXT NOT NULL,
+emailUsers TINYTEXT NOT NULL,
+pwdUsers LONGTEXT NOT NULL
+);
+
+
+create table notes (
+id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+userId int(11) NOT NULL references users(idUsers),
+title varchar(100) NOT NULL,
+details varchar(500) NOT NULL,
+state int(2)
+);
+
+//Credentials to connect to database
+//Defined in php_project/includes/dbh.inc.php
+
+$servername = "localhost";
+$dBUsername = "root";
+$dBPassword = "";
+$dBName = "stickynotesdb";
